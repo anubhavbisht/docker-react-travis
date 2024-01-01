@@ -7,3 +7,15 @@ before_install:
 
 script:
   - docker run -e CI=true anubhavbisht/docker-react-travis npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-north-1"
+  app: "aws anubhav beanstalk"
+  env: "Awsanubhavbeanstalk-env"
+  bucket_name: "elasticbeanstalk-eu-north-1-961492333341"
+  bucket_path: "aws anubhav beanstalk"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: "$AWS_SECRET_ACCESS_KEY_ID"
